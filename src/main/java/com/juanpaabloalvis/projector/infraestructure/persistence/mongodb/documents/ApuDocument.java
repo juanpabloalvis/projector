@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class ApuDocument {
     @Id
     UUID id;
     ApuType apuType;
+    @DocumentReference(lazy = true)
     List<ItemDocument> items;
 
 }

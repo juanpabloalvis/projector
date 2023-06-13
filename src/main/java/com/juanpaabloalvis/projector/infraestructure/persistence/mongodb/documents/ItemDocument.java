@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ import java.util.UUID;
 public class ItemDocument {
     @Id
     private UUID id;
+    @DocumentReference
     private SupplierDocument supplier;
     private double vlrUnit;
 }

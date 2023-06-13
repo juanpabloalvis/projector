@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -25,16 +26,19 @@ public class ActivityDocument {
     String name;
     String description;
     String versionName;
+    @DocumentReference
     UnitDocument activityUnit;
 
     Instant startDateEstimated;
     Instant endDateEstimated;
     double qtyEstimated;
+    @DocumentReference(lazy = true)
     ApuDocument apuEstimated;
 
     Instant startDateReal;
     Instant endDateReal;
-    ApuDocument apuReal;
     double qtyReal;
+    @DocumentReference(lazy = true)
+    ApuDocument apuReal;
 
 }
