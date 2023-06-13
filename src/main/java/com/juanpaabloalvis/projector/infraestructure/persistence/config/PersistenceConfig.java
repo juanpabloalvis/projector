@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.naming.ConfigurationException;
 
-//@RequiredArgsConstructor
 @Slf4j
 @Configuration
 public class PersistenceConfig {
