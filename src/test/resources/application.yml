@@ -24,3 +24,5 @@
 #  log:
 #    slf4j:
 #      flagUsage: DEBUG
+#database:
+#  mode: mongo

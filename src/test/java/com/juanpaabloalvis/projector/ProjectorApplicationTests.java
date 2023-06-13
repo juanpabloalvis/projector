@@ -12,7 +12,7 @@ class ProjectorApplicationTests {
     void contextLoads() {
         String a = "jklj";
         String b = "jklj";
-
+        System.out.println("***************TEST");
         assertEquals(a, b);
     }
 
