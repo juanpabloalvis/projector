@@ -17,7 +17,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Project {
-    private UUID id;
+    private String id;
     private String name;
     private String description;
     private Instant creationDate;

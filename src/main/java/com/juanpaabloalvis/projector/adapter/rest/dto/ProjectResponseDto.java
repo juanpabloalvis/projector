@@ -13,7 +13,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectResponseDto {
-    private UUID id;
+    private String id;
     private String name;
     private String description;
     private Instant creationDate;

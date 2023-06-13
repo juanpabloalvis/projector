@@ -20,6 +20,7 @@ spring:
       database: projector
       host: localhost
       port: 27007
+      uuid-representation: standard
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
 
