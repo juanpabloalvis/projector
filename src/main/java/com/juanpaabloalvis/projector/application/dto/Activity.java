@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Data
 @Builder(toBuilder = true)
@@ -15,22 +14,22 @@ import java.util.UUID;
 public class Activity {
 
 
-    private UUID id;
+    private String id;
+    private String parentProjectId;
+    private int level;
+    private String name;
+    private String description;
+    private String versionName;
+    private Unit activityUnit;
 
-    int level;
-    String name;
-    String description;
-    String versionName;
-    Unit activityUnit;
+    private Instant startDateEstimated;
+    private Instant endDateEstimated;
+    private double qtyEstimated;
+    private Apu apuEstimated;
 
-    Instant startDateEstimated;
-    Instant endDateEstimated;
-    double qtyEstimated;
-    Apu apuEstimated;
-
-    Instant startDateReal;
-    Instant endDateReal;
-    Apu apuReal;
-    double qtyReal;
+    private Instant startDateReal;
+    private Instant endDateReal;
+    private Apu apuReal;
+    private double qtyReal;
 
 }

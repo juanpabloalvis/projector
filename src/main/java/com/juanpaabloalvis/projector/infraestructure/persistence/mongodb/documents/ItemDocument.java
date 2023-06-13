@@ -8,8 +8,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-import java.util.UUID;
-
 @Data
 @Builder(toBuilder = true)
 @AllArgsConstructor
@@ -17,7 +15,7 @@ import java.util.UUID;
 @Document("item")
 public class ItemDocument {
     @Id
-    private UUID id;
+    private String id;
     @DocumentReference
     private SupplierDocument supplier;
     private double vlrUnit;

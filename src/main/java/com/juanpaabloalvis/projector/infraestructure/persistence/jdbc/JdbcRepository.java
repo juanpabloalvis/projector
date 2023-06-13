@@ -1,12 +1,14 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.jdbc;
 
 import com.juanpaabloalvis.projector.application.dto.Project;
+import com.juanpaabloalvis.projector.application.dto.Unit;
 import com.juanpaabloalvis.projector.application.ports.out.CreateProjectOutPort;
 import com.juanpaabloalvis.projector.infraestructure.mappers.ProjectMapper;
 import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.entities.ProjectEntity;
 import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.respository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -27,5 +29,10 @@ public class JdbcRepository implements CreateProjectOutPort {
         Project dto = ProjectMapper.INSTANCE.toDomain(projectEntity);
         log.debug("Saved with id: {}", projectEntity.getId());
         return dto;
+    }
+
+    @Override
+    public Unit saveUnit(Unit unit) {
+        throw new NotImplementedException();
     }
 }

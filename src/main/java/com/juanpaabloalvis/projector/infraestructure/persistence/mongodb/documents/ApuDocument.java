@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Builder(toBuilder = true)
@@ -18,9 +17,9 @@ import java.util.UUID;
 @Document("apu")
 public class ApuDocument {
     @Id
-    UUID id;
-    ApuType apuType;
+    private String id;
+    private ApuType apuType;
     @DocumentReference(lazy = true)
-    List<ItemDocument> items;
+    private List<ItemDocument> items;
 
 }

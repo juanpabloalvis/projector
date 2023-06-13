@@ -14,10 +14,10 @@ import java.util.UUID;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Document("unit")
+@Document("supplier")
 public class SupplierDocument {
     @Id
-    private UUID id;
+    private String id;
     private String name;
     private String description;
     @DocumentReference

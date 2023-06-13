@@ -1,5 +1,7 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.mongodb.documents;
 
+import com.juanpaabloalvis.projector.application.dto.Apu;
+import com.juanpaabloalvis.projector.application.dto.Unit;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +11,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Data
 @Builder(toBuilder = true)
@@ -18,27 +19,27 @@ import java.util.UUID;
 @Document("activity")
 public class ActivityDocument {
 
-
     @Id
-    private UUID id;
-
-    int level;
-    String name;
-    String description;
-    String versionName;
+    private String id;
+    private String parentProjectId;
+    private int level;
+    private String name;
+    private String description;
+    private String versionName;
     @DocumentReference
-    UnitDocument activityUnit;
+    private Unit activityUnit;
 
-    Instant startDateEstimated;
-    Instant endDateEstimated;
-    double qtyEstimated;
+    private Instant startDateEstimated;
+    private Instant endDateEstimated;
+    private double qtyEstimated;
     @DocumentReference(lazy = true)
-    ApuDocument apuEstimated;
+    private Apu apuEstimated;
 
-    Instant startDateReal;
-    Instant endDateReal;
-    double qtyReal;
+    private Instant startDateReal;
+    private Instant endDateReal;
     @DocumentReference(lazy = true)
-    ApuDocument apuReal;
+    private Apu apuReal;
+    private double qtyReal;
+
 
 }

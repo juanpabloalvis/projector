@@ -16,6 +16,8 @@ import java.util.UUID;
 @Document("unit")
 public class UnitDocument {
     @Id
-    private UUID id;
+    private String id;
     private String name;
+    private String shortDescription;
+    private String longDescription;
 }
