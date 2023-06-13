@@ -1,2 +1,2 @@
 database:
-  mode: mongo
+  mode: h2

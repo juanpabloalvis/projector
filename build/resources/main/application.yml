@@ -8,6 +8,8 @@ logging:
     com.juanpaabloalvis.projector: DEBUG
 
 spring:
+  h2:
+    console.enabled: true
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
@@ -15,7 +17,7 @@ spring:
     password: sa
   data:
     mongodb:
-      database: spring-core
+      database: projector
       host: localhost
       port: 27007
   jpa:

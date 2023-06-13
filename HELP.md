@@ -1,4 +1,8 @@
 # Getting Started
+Swagger URL:
+http://localhost:8084/jp/swagger-ui/index.html
+H2 Console:
+http://localhost:8084/jp/h2-console/login.jsp
 
 ### Reference Documentation
 For further reference, please consider the following sections:

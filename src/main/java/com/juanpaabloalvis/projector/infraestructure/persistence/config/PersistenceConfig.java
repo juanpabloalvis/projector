@@ -1,34 +1,46 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.config;
 
 import com.juanpaabloalvis.projector.application.ports.out.CreateProjectOutPort;
-import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.JdbcRepository;
-import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.respository.ProjectRepository;
-import com.juanpaabloalvis.projector.infraestructure.persistence.mongodb.MongoRepository;
-import com.juanpaabloalvis.projector.infraestructure.persistence.mongodb.repository.ProjectMongoRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import javax.naming.ConfigurationException;
 
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 @Slf4j
 @Configuration
 public class PersistenceConfig {
-    private final ProjectRepository projectRepository;
-    private final ProjectMongoRepository mongoRepository;
+
+    @Qualifier("mongodbService")
+    private final CreateProjectOutPort mongoDb;
+    @Qualifier("jdbcService")
+    private final CreateProjectOutPort jdbcDb;
+
+    public PersistenceConfig(@Qualifier("mongodbService") CreateProjectOutPort mongoDb, @Qualifier("jdbcService") CreateProjectOutPort jdbcDb) {
+        this.mongoDb = mongoDb;
+        this.jdbcDb = jdbcDb;
+    }
+//    private final ProjectRepository projectRepository;
+//    private final ProjectMongoRepository mongoRepository;
+
+//    public PersistenceConfig(ProjectRepository projectRepository, ProjectMongoRepository mongoRepository) {
+//        this.projectRepository = projectRepository;
+//        this.mongoRepository = mongoRepository;
+//    }
 
 
     @Bean
-    CreateProjectOutPort getDatabase(@Value("${database.mode:h2}") String databaseMode) throws ConfigurationException {
+    CreateProjectOutPort getDatabase(@Value("${database.mode}") String databaseMode) throws ConfigurationException {
+        log.info("Starting [{}] DB configuration", databaseMode);
         if ("h2".equals(databaseMode)) {
-            log.info("Starting h2 Configuration");
-            return new MongoRepository(mongoRepository);
+            return jdbcDb;
         } else if ("mongo".equals(databaseMode)) {
             log.info("Starting mongodb Configuration");
-            return new JdbcRepository(projectRepository);
+            return mongoDb;
         }
         throw new ConfigurationException("invalid value for 'database.mode': " + databaseMode);
 

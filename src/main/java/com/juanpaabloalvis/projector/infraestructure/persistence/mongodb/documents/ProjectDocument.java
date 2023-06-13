@@ -21,7 +21,7 @@ import java.util.UUID;
 @Document("project")
 public class ProjectDocument {
     @Id
-    private UUID id;
+    private String id;
     private String name;
     private String description;
     private Instant creationDate;
