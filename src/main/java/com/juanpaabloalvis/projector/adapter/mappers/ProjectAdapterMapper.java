@@ -2,7 +2,7 @@ package com.juanpaabloalvis.projector.adapter.mappers;
 
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectRequestDto;
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectResponseDto;
-import com.juanpaabloalvis.projector.application.dto.ProjectDto;
+import com.juanpaabloalvis.projector.application.dto.Project;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -16,10 +16,11 @@ public interface ProjectAdapterMapper {
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
     @Mapping(source = "creationDate", target = "creationDate")
-    ProjectDto toProjectDto(ProjectRequestDto project);
+    Project toDomain(ProjectRequestDto projectRequestDto);
 
+    @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "description", target = "description")
     @Mapping(source = "creationDate", target = "creationDate")
-    ProjectResponseDto toResponseDto(ProjectDto projectDto);
+    ProjectResponseDto toResponseDto(Project project);
 }

@@ -1,0 +1,26 @@
+#server:
+#  servlet:
+#    context-path: /jp
+#
+#logging:
+#  level:
+#    com.juanpaabloalvis.projector: DEBUG
+#
+#spring:
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password: sa
+#  data:
+#    mongodb:
+#      database: spring-core
+#      host: localhost
+#      port: 27007
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#
+#lombok:
+#  log:
+#    slf4j:
+#      flagUsage: DEBUG

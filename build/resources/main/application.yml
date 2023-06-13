@@ -1,6 +1,7 @@
 server:
   servlet:
     context-path: /jp
+  port: 8084
 
 logging:
   level:

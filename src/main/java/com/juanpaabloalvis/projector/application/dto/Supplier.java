@@ -5,16 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.util.UUID;
 
 @Data
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectDto {
+public class Supplier {
     private UUID id;
     private String name;
     private String description;
-    private Instant creationDate;
+    private Unit supplierUnit;
 }

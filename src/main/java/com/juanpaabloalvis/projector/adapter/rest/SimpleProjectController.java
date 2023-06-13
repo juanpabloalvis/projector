@@ -3,7 +3,7 @@ package com.juanpaabloalvis.projector.adapter.rest;
 import com.juanpaabloalvis.projector.adapter.mappers.ProjectAdapterMapper;
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectRequestDto;
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectResponseDto;
-import com.juanpaabloalvis.projector.application.dto.ProjectDto;
+import com.juanpaabloalvis.projector.application.dto.Project;
 import com.juanpaabloalvis.projector.application.ports.in.CreateProjectIntInPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +25,9 @@ public class SimpleProjectController {
     public @ResponseBody ProjectResponseDto getProject(@RequestBody ProjectRequestDto projectRequestDto) {
 
         log.debug("Data: {}", projectRequestDto);
-        ProjectDto projectDto = ProjectAdapterMapper.INSTANCE.toProjectDto(projectRequestDto);
-        projectDto = createProjectIntInPort.createProject(projectDto);
-        ProjectResponseDto projectResponseDto = ProjectAdapterMapper.INSTANCE.toResponseDto(projectDto);
+        Project project = ProjectAdapterMapper.INSTANCE.toDomain(projectRequestDto);
+        project = createProjectIntInPort.createProject(project);
+        ProjectResponseDto projectResponseDto = ProjectAdapterMapper.INSTANCE.toResponseDto(project);
         log.debug("The response was {}", projectResponseDto);
         return projectResponseDto;
     }
