@@ -1,12 +1,7 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.config;
 
 import com.juanpaabloalvis.projector.application.ports.out.CreateProjectOutPort;
-import com.mongodb.ConnectionString;
-import com.mongodb.MongoClientSettings;
-import com.mongodb.client.MongoClient;
-import com.mongodb.client.MongoClients;
 import lombok.extern.slf4j.Slf4j;
-import org.bson.UuidRepresentation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -42,13 +37,4 @@ public class PersistenceConfig {
         throw new ConfigurationException("invalid value for 'database.mode': " + databaseMode);
 
     }
-
-//    @Bean
-//    public MongoClient mongo() throws Exception {
-//        ConnectionString connectionString = new ConnectionString("mongodb://localhost:27007/pojector");
-//        MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
-//                .uuidRepresentation(UuidRepresentation.STANDARD)
-//                .applyConnectionString(connectionString).build();
-//        return MongoClients.create(mongoClientSettings);
-//    }
 }
