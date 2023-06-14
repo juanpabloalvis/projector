@@ -1,20 +1,20 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.jdbc;
 
 import com.juanpaabloalvis.projector.application.dto.Project;
-import com.juanpaabloalvis.projector.application.dto.Unit;
-import com.juanpaabloalvis.projector.application.ports.out.CreateProjectOutPort;
+import com.juanpaabloalvis.projector.application.ports.out.ProjectOutPort;
 import com.juanpaabloalvis.projector.infraestructure.mappers.ProjectMapper;
 import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.entities.ProjectEntity;
 import com.juanpaabloalvis.projector.infraestructure.persistence.jdbc.respository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Component;
+
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Slf4j
-@Component("jdbcService")
-public class JdbcRepository implements CreateProjectOutPort {
+@Component("jdbcProjectService")
+public class JdbcRepository implements ProjectOutPort {
 
 
     private final ProjectRepository projectRepository;
@@ -32,7 +32,23 @@ public class JdbcRepository implements CreateProjectOutPort {
     }
 
     @Override
-    public Unit saveUnit(Unit unit) {
-        throw new NotImplementedException();
+    public Project updateProject(Project project) {
+        ProjectEntity projectEntity = ProjectMapper.INSTANCE.toEntity(project);
+        ProjectEntity updated = projectRepository.save(projectEntity);
+        return ProjectMapper.INSTANCE.toDomain(updated);
+
     }
+
+    @Override
+    public void deleteProjectById(String id) {
+        projectRepository.deleteById(UUID.fromString(id));
+    }
+
+    @Override
+    public Project getProjectById(String id) {
+        return projectRepository.findById(UUID.fromString(id))
+                .map(ProjectMapper.INSTANCE::toDomain)
+                .orElseThrow();
+    }
+
 }

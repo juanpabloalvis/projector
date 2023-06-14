@@ -4,10 +4,6 @@ import com.juanpaabloalvis.projector.infraestructure.persistence.mongodb.documen
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
-
 @Repository
 public interface ProjectMongoRepository extends MongoRepository<ProjectDocument, String> {
-
-
 }

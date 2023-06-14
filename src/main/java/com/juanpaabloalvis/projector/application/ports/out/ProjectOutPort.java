@@ -1,9 +1,14 @@
 package com.juanpaabloalvis.projector.application.ports.out;
 
 import com.juanpaabloalvis.projector.application.dto.Project;
-import com.juanpaabloalvis.projector.application.dto.Unit;
 
-public interface CreateProjectOutPort {
+public interface ProjectOutPort {
     Project saveProject(Project project);
-    Unit saveUnit(Unit unit);
+
+    Project updateProject(Project project);
+
+    void deleteProjectById(String id);
+
+    Project getProjectById(String id);
+
 }

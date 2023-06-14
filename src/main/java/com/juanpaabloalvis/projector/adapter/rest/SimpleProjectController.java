@@ -4,7 +4,7 @@ import com.juanpaabloalvis.projector.adapter.mappers.ProjectAdapterMapper;
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectRequestDto;
 import com.juanpaabloalvis.projector.adapter.rest.dto.ProjectResponseDto;
 import com.juanpaabloalvis.projector.application.dto.Project;
-import com.juanpaabloalvis.projector.application.ports.in.CreateProjectIntInPort;
+import com.juanpaabloalvis.projector.application.ports.in.ProjectInPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class SimpleProjectController {
 
-    private final CreateProjectIntInPort createProjectIntInPort;
+    private final ProjectInPort projectInPort;
 
     @PostMapping(produces = "application/json")
     public @ResponseBody ProjectResponseDto getProject(@RequestBody ProjectRequestDto projectRequestDto) {
 
         log.debug("Data: {}", projectRequestDto);
         Project project = ProjectAdapterMapper.INSTANCE.toDomain(projectRequestDto);
-        project = createProjectIntInPort.createProject(project);
+        project = projectInPort.createProject(project);
         ProjectResponseDto projectResponseDto = ProjectAdapterMapper.INSTANCE.toResponseDto(project);
         log.debug("The response was {}", projectResponseDto);
         return projectResponseDto;

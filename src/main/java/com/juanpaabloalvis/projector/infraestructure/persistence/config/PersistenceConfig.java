@@ -1,6 +1,6 @@
 package com.juanpaabloalvis.projector.infraestructure.persistence.config;
 
-import com.juanpaabloalvis.projector.application.ports.out.CreateProjectOutPort;
+import com.juanpaabloalvis.projector.application.ports.out.ProjectOutPort;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,25 +13,23 @@ import javax.naming.ConfigurationException;
 @Configuration
 public class PersistenceConfig {
 
-    @Qualifier("mongodbService")
-    private final CreateProjectOutPort mongoDb;
-    @Qualifier("jdbcService")
-    private final CreateProjectOutPort jdbcDb;
+    private final ProjectOutPort mongoProjectDb;
+    private final ProjectOutPort jdbcProjectDb;
 
-    public PersistenceConfig(@Qualifier("mongodbService") CreateProjectOutPort mongoDb, @Qualifier("jdbcService") CreateProjectOutPort jdbcDb) {
-        this.mongoDb = mongoDb;
-        this.jdbcDb = jdbcDb;
+    public PersistenceConfig(@Qualifier("mongodbProjectService") ProjectOutPort mongoProjectDb, @Qualifier("jdbcProjectService") ProjectOutPort jdbcProjectDb) {
+        this.mongoProjectDb = mongoProjectDb;
+        this.jdbcProjectDb = jdbcProjectDb;
     }
 
 
-    @Bean
-    CreateProjectOutPort getDatabase(@Value("${database.mode}") String databaseMode) throws ConfigurationException {
+    @Bean("projectDatabase")
+    ProjectOutPort getProjectDatabase(@Value("${database.mode}") String databaseMode) throws ConfigurationException {
         log.info("Starting [{}] DB configuration", databaseMode);
         if ("h2".equals(databaseMode)) {
-            return jdbcDb;
+            return jdbcProjectDb;
         } else if ("mongo".equals(databaseMode)) {
             log.info("Starting mongodb Configuration");
-            return mongoDb;
+            return mongoProjectDb;
         }
         throw new ConfigurationException("invalid value for 'database.mode': " + databaseMode);
 
