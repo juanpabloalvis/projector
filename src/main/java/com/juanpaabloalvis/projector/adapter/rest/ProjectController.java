@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("project")
 @RequiredArgsConstructor
 @Slf4j
-public class SimpleProjectController {
+public class ProjectController {
 
     private final ProjectInPort projectInPort;
 

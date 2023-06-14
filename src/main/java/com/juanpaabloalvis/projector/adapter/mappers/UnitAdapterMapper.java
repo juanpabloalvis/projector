@@ -12,7 +12,6 @@ public interface UnitAdapterMapper {
 
     UnitAdapterMapper INSTANCE = Mappers.getMapper(UnitAdapterMapper.class);
 
-
     @Mapping(source = "name", target = "name")
     @Mapping(source = "shortDescription", target = "shortDescription")
     @Mapping(source = "longDescription", target = "longDescription")
