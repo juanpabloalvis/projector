@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("units")
 @RequiredArgsConstructor
 @Slf4j
-public class UnitsController {
+public class UnitController {
 
     private final UnitInPort unitInPort;
 

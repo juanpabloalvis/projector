@@ -12,7 +12,7 @@ public class ProjectUseCase implements ProjectInPort {
 
     private final ProjectOutPort projectOutPort;
 
-    public ProjectUseCase(@Qualifier(value = "projectDatabase") ProjectOutPort projectOutPort) {
+    public ProjectUseCase(@Qualifier("projectDatabaseConfig") ProjectOutPort projectOutPort) {
         this.projectOutPort = projectOutPort;
     }
 

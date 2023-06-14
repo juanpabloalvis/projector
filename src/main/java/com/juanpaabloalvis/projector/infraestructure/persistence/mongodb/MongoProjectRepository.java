@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Slf4j
-@Component("mongodbProjectService")
+@Component
 public class MongoProjectRepository implements ProjectOutPort {
 
     private final ProjectMongoRepository projectRepository;
