@@ -14,7 +14,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 @Component("jdbcProjectService")
-public class JdbcRepository implements ProjectOutPort {
+public class JdbcProjectRepository implements ProjectOutPort {
 
 
     private final ProjectRepository projectRepository;
